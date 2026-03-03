@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملف الأستاذ محمد</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Tajawal', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* اگر تصویر پس‌زمینه لود نشد، یک گرادینت نرم مذهبی نشان داده شود */
+            background: linear-gradient(135deg, #e3e9d9 0%, #fdfdfd 100%); 
+        }
+
+        /* پس‌زمینه مسجد النبی با تاری زیاد */
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* تصویر پس‌زمینه مسجد النبی */
+            background-image: url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=1000');
+            background-size: cover;
+            background-position: center;
+            filter: blur(15px); /* تاری برای تمرکز کامل بر کارت */
+            z-index: -1;
+            transform: scale(1.1);
+        }
+
+        /* کارت پروفایل شیشه‌ای شفاف */
+        .profile-card {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            /* عرض کارت برای دسکتاپ */
+            width: 380px; 
+            max-width: 90%; /* برای اینکه در موبایل از صفحه بیرون نزند */
+            padding: 40px 20px;
+            border-radius: 35px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            color: #1a4d2e; /* سبز تیره مذهبی */
+            box-sizing: border-box; /* برای محاسبه صحیح پدینگ */
+        }
+
+        /* تصویر پروفایل (گنبد سبز) */
+        .profile-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid #d4af37; /* حاشیه طلایی */
+            padding: 3px;
+            margin-bottom: 15px;
+            background: #fff;
+            object-fit: cover; /* برای اینکه تصویر دفرمه نشود */
+        }
+
+        h1 {
+            font-size: 28px;
+            margin: 5px 0;
+            color: #1a4d2e;
+            font-weight: 700;
+        }
+
+        .title-job {
+            font-size: 18px;
+            color: #8a6d1d;
+            font-weight: 500;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .description {
+            font-size: 15px;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            padding: 0 10px;
+        }
+
+        /* بخش آیکون‌های اجتماعی */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap; /* در موبایل اگر جا نشدند بروند خط بعد */
+        }
+
+        .social-links a {
+            color: #1a4d2e;
+            font-size: 20px;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-sizing: border-box;
+        }
+
+        .social-links a:hover {
+            background: #d4af37;
+            color: #fff;
+            transform: translateY(-5px);
+        }
+
+        /* استایل خاص برای آیکون SVG ایکس */
+        .x-icon-svg {
+            width: 20px;
+            height: 20px;
+            fill: #1a4d2e; /* رنگ اولیه آیکون */
+            transition: 0.3s ease;
+        }
+
+        .social-links a:hover .x-icon-svg {
+            fill: #fff; /* رنگ آیکون هنگام هاور */
+        }
+
+        .footer-verse {
+            margin-top: 25px;
+            font-size: 18px;
+            color: #1a4d2e;
+            font-style: italic;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding-top: 15px;
+        }
+
+        /* --- تنظیمات مخصوص موبایل --- */
+        @media (max-width: 480px) {
+            .profile-card {
+                padding: 30px 15px;
+                border-radius: 25px;
+            }
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            .title-job {
+                font-size: 16px;
+            }
+            .description {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+            .social-links a {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+            .x-icon-svg {
+                width: 18px;
+                height: 18px;
+            }
+            .footer-verse {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-image"></div>
+
+    <div class="profile-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/%D8%A7%D9%84%D9%82%D8%A8%D8%A9_%D8%A7%D9%84%D8%AE%D8%B6%D8%B1%D8%A7%D8%A1.jpg" alt="الأستاذ محمد" class="profile-img">
+        
+        <h1>الأستاذ محمد</h1>
+        <div class="title-job">مدير حلقات الحفظ في جامع عمر بن الخطاب بباقدو - مدينة الرسول ﷺ</div>
+        
+        <p class="description">
+            متخصص في إدارة الحلقات القرآنية وتطوير مناهج الحفظ والتدبر. نسعى لبناء جيل قرآني متمسك بكتاب الله وسنة نبيه في رحاب مدينة المصطفى ﷺ.
+        </p>
+        
+        <div class="social-links">
+            <a href="#" title="Snapchat"><i class="fab fa-snapchat"></i></a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            
+            <a href="#" title="X">
+                <svg class="x-icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                    <g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g>
+                </svg>
+            </a>
+            
+            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+
+        <div class="footer-verse">
+            «خَيْرُكُمْ مَنْ تَعَلَّمَ القُرْآنَ وَعَلَّمَهُ»
+        </div>
+    </div>
+
+</body>
+</html>
