@@ -10,14 +10,14 @@
     <style>
         body, html {
             margin: 0;
-            padding: 0;
-            height: 100%;
+            padding: 15px; /* این خط باعث می‌شود در موبایل از اطراف فاصله بگیرد */
+            min-height: 100vh;
             font-family: 'Tajawal', sans-serif;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            overflow: auto;
+            box-sizing: border-box; /* برای اینکه پدینگ باعث اسکرول نشود */
         }
 
         .bg-image {
@@ -37,15 +37,17 @@
         .profile-card {
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(25px);
-            width: 90%;
-            max-width: 400px;
+            -webkit-backdrop-filter: blur(25px);
+            width: 95%; /* کمی کمتر شد تا از لبه‌ها فاصله بگیرد */
+            max-width: 380px; 
             padding: 30px 20px;
             border-radius: 30px;
             border: 1px solid rgba(255, 255, 255, 0.4);
             text-align: center;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             color: #1a4d2e;
-            margin: 20px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
         }
 
         .profile-img {
@@ -87,8 +89,9 @@
         }
 
         .order-button {
-            margin-bottom: 30px;
+            margin-top: 10px;
             text-align: center;
+            width: 100%;
         }
 
         .order-button a {
@@ -97,41 +100,16 @@
             gap: 10px;
             background: #25D366;
             color: white;
-            padding: 14px 30px;
+            padding: 12px 25px;
             border-radius: 50px;
-            font-size: 18px;
+            font-size: 17px;
             text-decoration: none;
             font-weight: 700;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             transition: 0.3s;
         }
 
-        .order-button a i {
-            font-size: 28px; /* بزرگ‌تر شدن آیکون */
-        }
-
-        .order-button a:hover {
-            background: #1ebe5d;
-            transform: translateY(-2px);
-        }
-
-        /* Media query برای موبایل */
-        @media (max-width: 500px) {
-            .profile-card {
-                width: 95%;
-                padding: 25px 15px;
-            }
-
-            .order-button a {
-                padding: 12px 20px;
-                font-size: 16px;
-                gap: 8px;
-            }
-
-            .order-button a i {
-                font-size: 24px;
-            }
-        }
+        .order-button a i { font-size: 24px; }
     </style>
 </head>
 <body>
@@ -157,7 +135,7 @@
         </div>
 
         <div class="footer-verse">
-            «خَيْرُكُمْ مَنْ تَعَلَّمَ القُرْآنَ وَعَلَّمَهُ»
+            «خَيْرُكُمْ مَنْ تَعَلَّمَ القُرْآنَ وَعَلَّمَهُ»
         </div>
     </div>
 
