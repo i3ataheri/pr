@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پالت پاستیلی موبایل‌فرندلی</title>
+    <title>کارت طولی پاستیلی</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -14,102 +14,109 @@
         body {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             min-height: 100vh;
             margin: 0;
             padding: 20px;
-            background-color: #f0f2f5;
+            background-color: #f5f5f7;
             font-family: 'Vazirmatn', sans-serif;
             box-sizing: border-box;
         }
 
+        /* پالت رنگ - سازگار با موبایل */
         .palette-container {
             background: white;
             padding: 15px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             margin-bottom: 25px;
             width: 100%;
-            max-width: 500px; /* جلوگیری از عریض شدن بیش از حد در دسکتاپ */
+            max-width: 380px;
         }
 
         .palette-grid {
-            display: flex;
-            flex-wrap: wrap; /* اجازه شکستن ردیف‌ها در موبایل */
-            justify-content: center;
-            gap: 8px;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr); /* ۱۰ ستون در دسکتاپ */
+            gap: 6px;
+        }
+
+        @media (max-width: 400px) {
+            .palette-grid {
+                grid-template-columns: repeat(5, 1fr); /* ۵ ستون در موبایل‌های کوچک */
+            }
         }
 
         .color-dot {
-            width: calc(10% - 8px); /* در دسکتاپ ۱۰ ستونه */
-            min-width: 35px; /* جلوگیری از کوچک شدن بیش از حد در موبایل */
-            height: 35px;
-            border-radius: 10px;
+            aspect-ratio: 1 / 1;
+            border-radius: 8px;
             cursor: pointer;
             border: 1px solid rgba(0,0,0,0.05);
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
-            transition: all 0.2s ease;
+            transition: transform 0.2s ease;
         }
 
-        /* نمایش شماره در موبایل با لمس (Touch) و در دسکتاپ با هاور */
         .color-dot::after {
             content: attr(data-index);
             font-size: 10px;
             font-weight: bold;
             color: white;
             opacity: 0;
-            transition: opacity 0.2s;
             pointer-events: none;
         }
 
-        .color-dot:hover::after, .color-dot:active::after {
-            opacity: 1;
-        }
-
+        .color-dot:hover::after { opacity: 1; }
         .color-dot.light-bg::after { color: #333; }
+        .color-dot:active { transform: scale(0.9); }
+        .color-dot.active { outline: 2px solid #333; outline-offset: 1px; }
 
-        .color-dot:hover { transform: scale(1.1); }
-
-        .color-dot.active {
-            outline: 2px solid #333;
-            outline-offset: 2px;
-        }
-
-        /* کارت واکنش‌گرا */
+        /* کارت طولی (Vertical Card) */
         .card {
             width: 100%;
-            max-width: 450px;
-            min-height: 200px;
+            max-width: 320px; /* عرض کم برای حالت طولی */
+            height: 500px;    /* ارتفاع بلند */
             background-color: var(--card-bg);
             color: var(--text-color);
-            border-radius: 30px;
-            padding: 30px;
+            border-radius: 40px;
+            padding: 40px 30px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* پخش محتوا در طول کارت */
             box-sizing: border-box;
         }
 
-        h2 { font-size: 1.5rem; margin-bottom: 15px; font-weight: 700; }
-        p { font-size: 1rem; line-height: 1.6; opacity: 0.9; margin: 0; }
-
-        #hexDisplay {
-            margin-top: 15px;
-            font-family: monospace;
-            font-size: 0.8rem;
-            opacity: 0.6;
+        .card-top h2 {
+            font-size: 1.8rem;
+            margin: 0;
+            font-weight: 700;
         }
 
-        /* تنظیمات مخصوص موبایل */
-        @media (max-width: 480px) {
-            .palette-grid { gap: 6px; }
-            .color-dot { min-width: 30px; height: 30px; }
-            h2 { font-size: 1.2rem; }
-            p { font-size: 0.9rem; }
+        .card-body p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.85;
+        }
+
+        .card-footer {
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 20px;
+        }
+
+        .card-footer.dark-border {
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        #hexDisplay {
+            font-family: monospace;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -120,9 +127,18 @@
     </div>
 
     <div class="card" id="mainCard">
-        <h2>رنگ شماره: <span id="numDisplay">۱</span></h2>
-        <p id="cardText">این نسخه کاملاً با موبایل سازگار است. در موبایل با لمس کردن دایره‌ها شماره آن‌ها ظاهر می‌شود.</p>
-        <div id="hexDisplay">#FFFFFF</div>
+        <div class="card-top">
+            <div style="font-size: 40px; margin-bottom: 10px;">🎨</div>
+            <h2>شماره <span id="numDisplay">۱</span></h2>
+        </div>
+        
+        <div class="card-body">
+            <p>این یک طراحی طولی مدرن است. در این حالت، کارت برای نمایش در موبایل و استفاده به عنوان کارت ویزیت دیجیتال یا استوری بسیار مناسب است.</p>
+        </div>
+
+        <div class="card-footer" id="cardFooter">
+            <div id="hexDisplay">#FFFFFF</div>
+        </div>
     </div>
 
     <script>
@@ -137,6 +153,7 @@
         const grid = document.getElementById('grid');
         const numDisplay = document.getElementById('numDisplay');
         const hexDisplay = document.getElementById('hexDisplay');
+        const cardFooter = document.getElementById('cardFooter');
         const root = document.querySelector(':root');
 
         colors.forEach((color, index) => {
@@ -152,7 +169,6 @@
                 dot.classList.add('active');
                 updateCard(color, index + 1);
             });
-
             grid.appendChild(dot);
         });
 
@@ -160,8 +176,15 @@
             root.style.setProperty('--card-bg', color);
             numDisplay.innerText = index;
             hexDisplay.innerText = color.toUpperCase();
+            
             const brightness = getBrightness(color);
-            root.style.setProperty('--text-color', brightness < 128 ? '#ffffff' : '#333333');
+            if (brightness < 128) {
+                root.style.setProperty('--text-color', '#ffffff');
+                cardFooter.classList.add('dark-border');
+            } else {
+                root.style.setProperty('--text-color', '#333333');
+                cardFooter.classList.remove('dark-border');
+            }
         }
 
         function getBrightness(hex) {
