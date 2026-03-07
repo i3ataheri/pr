@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پالت ۵۰ رنگ با شماره‌گذاری هوشمند</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --card-bg: #ffffff;
+            --text-color: #333;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 40px 0;
+            background-color: #f0f2f5;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        .palette-container {
+            background: white;
+            padding: 25px;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            max-width: 550px;
+        }
+
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 12px;
+        }
+
+        /* دایره رنگی و شماره مخفی */
+        .color-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            cursor: pointer;
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        /* استایل شماره که با هاور ظاهر می‌شود */
+        .color-dot::after {
+            content: attr(data-index); /* خواندن شماره از ویژگی دیتا */
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 3px rgba(0,0,0,0.5);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        /* روشن کردن شماره در صورت روشن بودن رنگ پس‌زمینه */
+        .color-dot.light-bg::after {
+            color: #333;
+            text-shadow: none;
+        }
+
+        .color-dot:hover {
+            transform: scale(1.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .color-dot:hover::after {
+            opacity: 1;
+        }
+
+        .color-dot.active {
+            outline: 3px solid #333;
+            outline-offset: 2px;
+        }
+
+        /* کارت نمایش */
+        .card {
+            width: 480px;
+            min-height: 280px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border-radius: 45px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            transition: background-color 0.5s ease, color 0.3s ease;
+            position: relative;
+        }
+
+        h2 { font-size: 2.2rem; margin-bottom: 20px; font-weight: 700; }
+        p { font-size: 1.15rem; line-height: 1.8; opacity: 0.9; margin: 0; }
+
+        .footer-info {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="palette-container">
+        <div class="palette-grid" id="grid">
+            </div>
+    </div>
+
+    <div class="card" id="mainCard">
+        <h2>رنگ انتخابی: <span id="numDisplay">۱</span></h2>
+        <p>موس را روی دایره‌ها ببرید تا شماره هر رنگ را ببینید. با کلیک روی هر دایره، رنگ تمام این کارت تغییر می‌کند.</p>
+        <div class="footer-info" id="hexDisplay">#FFFFFF</div>
+    </div>
+
+    <script>
+        // لیست ۵۰ رنگ از روشن پاستیلی تا تیره مشکی
+        const colors = [
+            "#f8f9fa", "#f1f3f5", "#fff5f5", "#fff9db", "#f3fdf4", "#f0f7ff", "#fdf2ff", "#fff0f6", "#fff4e6", "#eef2ff",
+            "#ffc9c9", "#ffec99", "#b2f2bb", "#a5d8ff", "#eebefa", "#ffdeeb", "#d0ebff", "#c5f6fa", "#d3f9d8", "#ffe8cc",
+            "#ffa8a8", "#ffd43b", "#8ce99a", "#74c0fc", "#da77f2", "#f783ac", "#4dabf7", "#3bc9db", "#69db7c", "#ffa94d",
+            "#fa5252", "#fab005", "#40c057", "#228be6", "#be4bdb", "#e64980", "#fd7e14", "#adb5bd", "#868e96", "#495057",
+            "#c92a2a", "#e67700", "#2b8a3e", "#1864ab", "#862e9c", "#a61e4d", "#555555", "#333333", "#1a1a1a", "#000000"
+        ];
+
+        const grid = document.getElementById('grid');
+        const numDisplay = document.getElementById('numDisplay');
+        const hexDisplay = document.getElementById('hexDisplay');
+        const root = document.querySelector(':root');
+
+        // ساخت دایره‌ها به صورت خودکار
+        colors.forEach((color, index) => {
+            const dot = document.createElement('div');
+            dot.className = 'color-dot';
+            dot.style.backgroundColor = color;
+            dot.setAttribute('data-index', index + 1);
+            dot.setAttribute('data-color', color);
+
+            // بررسی روشنایی برای رنگ شماره (سیاه یا سفید بودن عدد)
+            if (getBrightness(color) > 200) {
+                dot.classList.add('light-bg');
+            }
+
+            dot.addEventListener('click', () => {
+                document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+                
+                updateCard(color, index + 1);
+            });
+
+            grid.appendChild(dot);
+        });
+
+        function updateCard(color, index) {
+            root.style.setProperty('--card-bg', color);
+            numDisplay.innerText = index;
+            hexDisplay.innerText = color.toUpperCase();
+
+            // تغییر هوشمند رنگ متن
+            const brightness = getBrightness(color);
+            root.style.setProperty('--text-color', brightness < 128 ? '#ffffff' : '#333333');
+        }
+
+        function getBrightness(hex) {
+            hex = hex.replace('#', '');
+            const r = parseInt(hex.substr(0, 2), 16);
+            const g = parseInt(hex.substr(2, 2), 16);
+            const b = parseInt(hex.substr(4, 2), 16);
+            return (r * 299 + g * 587 + b * 114) / 1000;
+        }
+
+        // انتخاب اولین رنگ به صورت پیش‌فرض
+        grid.firstChild.click();
+    </script>
+
+</body>
+</html>
