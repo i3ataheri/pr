@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پالت ۵۰ رنگ با شماره‌گذاری هوشمند</title>
-    
+    <title>پالت پاستیلی موبایل‌فرندلی</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;700&display=swap" rel="stylesheet">
-
     <style>
         :root {
             --card-bg: #ffffff;
@@ -19,22 +17,165 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 40px 0;
+            margin: 0;
+            padding: 20px;
             background-color: #f0f2f5;
             font-family: 'Vazirmatn', sans-serif;
+            box-sizing: border-box;
         }
 
         .palette-container {
             background: white;
-            padding: 25px;
-            border-radius: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-            margin-bottom: 40px;
-            max-width: 550px;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            width: 100%;
+            max-width: 500px; /* جلوگیری از عریض شدن بیش از حد در دسکتاپ */
         }
 
         .palette-grid {
-            display: grid;
+            display: flex;
+            flex-wrap: wrap; /* اجازه شکستن ردیف‌ها در موبایل */
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .color-dot {
+            width: calc(10% - 8px); /* در دسکتاپ ۱۰ ستونه */
+            min-width: 35px; /* جلوگیری از کوچک شدن بیش از حد در موبایل */
+            height: 35px;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        /* نمایش شماره در موبایل با لمس (Touch) و در دسکتاپ با هاور */
+        .color-dot::after {
+            content: attr(data-index);
+            font-size: 10px;
+            font-weight: bold;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+        }
+
+        .color-dot:hover::after, .color-dot:active::after {
+            opacity: 1;
+        }
+
+        .color-dot.light-bg::after { color: #333; }
+
+        .color-dot:hover { transform: scale(1.1); }
+
+        .color-dot.active {
+            outline: 2px solid #333;
+            outline-offset: 2px;
+        }
+
+        /* کارت واکنش‌گرا */
+        .card {
+            width: 100%;
+            max-width: 450px;
+            min-height: 200px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border-radius: 30px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            box-sizing: border-box;
+        }
+
+        h2 { font-size: 1.5rem; margin-bottom: 15px; font-weight: 700; }
+        p { font-size: 1rem; line-height: 1.6; opacity: 0.9; margin: 0; }
+
+        #hexDisplay {
+            margin-top: 15px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        /* تنظیمات مخصوص موبایل */
+        @media (max-width: 480px) {
+            .palette-grid { gap: 6px; }
+            .color-dot { min-width: 30px; height: 30px; }
+            h2 { font-size: 1.2rem; }
+            p { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="palette-container">
+        <div class="palette-grid" id="grid"></div>
+    </div>
+
+    <div class="card" id="mainCard">
+        <h2>رنگ شماره: <span id="numDisplay">۱</span></h2>
+        <p id="cardText">این نسخه کاملاً با موبایل سازگار است. در موبایل با لمس کردن دایره‌ها شماره آن‌ها ظاهر می‌شود.</p>
+        <div id="hexDisplay">#FFFFFF</div>
+    </div>
+
+    <script>
+        const colors = [
+            "#f8f9fa", "#f1f3f5", "#fff5f5", "#fff9db", "#f3fdf4", "#f0f7ff", "#fdf2ff", "#fff0f6", "#fff4e6", "#eef2ff",
+            "#ffc9c9", "#ffec99", "#b2f2bb", "#a5d8ff", "#eebefa", "#ffdeeb", "#d0ebff", "#c5f6fa", "#d3f9d8", "#ffe8cc",
+            "#ffa8a8", "#ffd43b", "#8ce99a", "#74c0fc", "#da77f2", "#f783ac", "#4dabf7", "#3bc9db", "#69db7c", "#ffa94d",
+            "#fa5252", "#fab005", "#40c057", "#228be6", "#be4bdb", "#e64980", "#fd7e14", "#adb5bd", "#868e96", "#495057",
+            "#c92a2a", "#e67700", "#2b8a3e", "#1864ab", "#862e9c", "#a61e4d", "#555555", "#333333", "#1a1a1a", "#000000"
+        ];
+
+        const grid = document.getElementById('grid');
+        const numDisplay = document.getElementById('numDisplay');
+        const hexDisplay = document.getElementById('hexDisplay');
+        const root = document.querySelector(':root');
+
+        colors.forEach((color, index) => {
+            const dot = document.createElement('div');
+            dot.className = 'color-dot';
+            dot.style.backgroundColor = color;
+            dot.setAttribute('data-index', index + 1);
+            
+            if (getBrightness(color) > 200) dot.classList.add('light-bg');
+
+            dot.addEventListener('click', () => {
+                document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+                updateCard(color, index + 1);
+            });
+
+            grid.appendChild(dot);
+        });
+
+        function updateCard(color, index) {
+            root.style.setProperty('--card-bg', color);
+            numDisplay.innerText = index;
+            hexDisplay.innerText = color.toUpperCase();
+            const brightness = getBrightness(color);
+            root.style.setProperty('--text-color', brightness < 128 ? '#ffffff' : '#333333');
+        }
+
+        function getBrightness(hex) {
+            hex = hex.replace('#', '');
+            const r = parseInt(hex.substr(0, 2), 16);
+            const g = parseInt(hex.substr(2, 2), 16);
+            const b = parseInt(hex.substr(4, 2), 16);
+            return (r * 299 + g * 587 + b * 114) / 1000;
+        }
+
+        grid.firstChild.click();
+    </script>
+</body>
+</html>            display: grid;
             grid-template-columns: repeat(10, 1fr);
             gap: 12px;
         }
