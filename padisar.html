@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدكتور أبو حسان أحمد بديسار</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;800&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #f4f7f6;
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* دوائر الخلفية الناعمة */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 1;
+            animation: move 15s ease-in-out infinite alternate;
+        }
+        .c1 { width: 500px; height: 500px; background: rgba(52, 152, 219, 0.15); top: -15%; right: -10%; }
+        .c2 { width: 400px; height: 400px; background: rgba(46, 204, 113, 0.1); bottom: -10%; left: -10%; animation-delay: -5s; }
+
+        @keyframes move {
+            from { transform: translate(0, 0); }
+            to { transform: translate(40px, 60px); }
+        }
+
+        /* البطاقة الزجاجية الاحترافية */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            width: 100%;
+            max-width: 500px;
+            padding: 50px 40px;
+            border-radius: 40px;
+            text-align: center;
+            z-index: 10;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
+            transition: 0.5s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.08);
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            padding: 6px;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            margin: 0 auto 25px;
+            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.2);
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #fff;
+            object-fit: cover;
+        }
+
+        h1 { 
+            color: #2c3e50; 
+            font-size: 28px; 
+            margin-bottom: 5px; 
+            font-weight: 800;
+        }
+
+        .subtitle {
+            color: #3498db;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .bio {
+            color: #5d6d7e;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: justify;
+            font-family: 'Amiri', serif; /* خط كلاسيكي للنصوص الدينية */
+        }
+
+        /* قسم التخصصات (الإضافة الجديدة) */
+        .specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .spec-item {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 12px;
+            border-radius: 15px;
+            border: 1px solid #eef2f7;
+            font-size: 13px;
+            color: #34495e;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .spec-item i { color: #3498db; }
+
+        .social-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .icon-btn {
+            width: 45px;
+            height: 45px;
+            background: #fff;
+            color: #2c3e50;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 18px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .icon-btn:hover {
+            background: #2c3e50;
+            color: #fff;
+            transform: translateY(-5px);
+        }
+
+        .main-btn {
+            background: #2c3e50;
+            color: #fff;
+            padding: 15px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            display: inline-block;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(44, 62, 80, 0.2);
+        }
+
+        .main-btn:hover {
+            background: #3498db;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 480px) {
+            .specs { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+
+    <div class="glass-card">
+        <div class="profile-img">
+            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Ahmad" alt="Doctor">
+        </div>
+
+        <h1> أبو حسان أحمد بديسار</h1>
+        <span class="subtitle">دكتوراه في علوم الحديث النبوي</span>
+
+        <p class="bio">
+            متخصص في السنة النبوية وعلوم الحديث، حاصل على درجة الدكتوراه من الجامعة الإسلامية بالمدينة المنورة. أعمل على تحقيق المخطوطات الحديثية ودراسة الأسانيد، مع التركيز على نشر الفكر الإسلامي الوسطي وتأصيل المسائل العلمية وفق المنهج الأكاديمي والشرعي الرصين.
+        </p>
+
+        <div class="specs">
+            <div class="spec-item"><i class="fas fa-graduation-cap"></i> خريج المدينة المنورة</div>
+            <div class="spec-item"><i class="fas fa-book-open"></i> تحقيق المخطوطات</div>
+            <div class="spec-item"><i class="fas fa-microscope"></i> نقد الأسانيد</div>
+            <div class="spec-item"><i class="fas fa-university"></i> باحث أكاديمي</div>
+        </div>
+
+        <div class="social-row">
+            <a href="#" class="icon-btn"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="icon-btn"><i class="fab fa-telegram-plane"></i></a>
+            <a href="#" class="icon-btn"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="icon-btn"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <a href="mailto:contact@doctor.com" class="main-btn">تواصل معي</a>
+    </div>
+
+    <script>
+        const card = document.querySelector('.glass-card');
+        document.addEventListener('mousemove', (e) => {
+            let xAxis = (window.innerWidth / 2 - e.pageX) / 40;
+            let yAxis = (window.innerHeight / 2 - e.pageY) / 40;
+            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+        
+        document.addEventListener('mouseleave', () => {
+            card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+        });
+    </script>
+</body>
+</html>
