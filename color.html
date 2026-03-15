@@ -1,201 +1,167 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>کارت طولی پاستیلی</title>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;700&display=swap" rel="stylesheet">
+    <title>پروفایل موبایل حرفه‌ای</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;800&family=Reem+Kufi:wght@500&display=swap" rel="stylesheet">
+    
     <style>
-        :root {
-            --card-bg: #ffffff;
-            --text-color: #333;
-        }
-
+        * { box-sizing: border-box; }
+        
         body {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            min-height: 100vh;
             margin: 0;
-            padding: 20px;
-            background-color: #f5f5f7;
-            font-family: 'Vazirmatn', sans-serif;
-            box-sizing: border-box;
-        }
-
-        /* پالت رنگ - سازگار با موبایل */
-        .palette-container {
-            background: white;
-            padding: 15px;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
-            width: 100%;
-            max-width: 380px;
-        }
-
-        .palette-grid {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr); /* ۱۰ ستون در دسکتاپ */
-            gap: 6px;
-        }
-
-        @media (max-width: 400px) {
-            .palette-grid {
-                grid-template-columns: repeat(5, 1fr); /* ۵ ستون در موبایل‌های کوچک */
-            }
-        }
-
-        .color-dot {
-            aspect-ratio: 1 / 1;
-            border-radius: 8px;
-            cursor: pointer;
-            border: 1px solid rgba(0,0,0,0.05);
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            background: #0f0c29;
+            /* پس‌زمینه گرادینت متحرک */
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
-            transition: transform 0.2s ease;
+            overflow: hidden;
         }
 
-        .color-dot::after {
-            content: attr(data-index);
-            font-size: 10px;
-            font-weight: bold;
-            color: white;
-            opacity: 0;
-            pointer-events: none;
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        .color-dot:hover::after { opacity: 1; }
-        .color-dot.light-bg::after { color: #333; }
-        .color-dot:active { transform: scale(0.9); }
-        .color-dot.active { outline: 2px solid #333; outline-offset: 1px; }
-
-        /* کارت طولی (Vertical Card) */
-        .card {
-            width: 100%;
-            max-width: 320px; /* عرض کم برای حالت طولی */
-            height: 500px;    /* ارتفاع بلند */
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            border-radius: 40px;
-            padding: 40px 30px;
+        .mobile-profile {
+            width: 90%;
+            max-width: 380px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 30px;
             text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            color: white;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+        }
+
+        .profile-header {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .profile-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 3px solid rgba(255,255,255,0.5);
+            padding: 5px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .status-dot {
+            position: absolute;
+            bottom: 10px;
+            right: 35%;
+            width: 15px;
+            height: 15px;
+            background: #2ecc71;
+            border-radius: 50%;
+            border: 2px solid white;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+        }
+
+        h1 {
+            font-family: 'Reem Kufi', sans-serif;
+            font-size: 26px;
+            margin: 10px 0 5px 0;
+            letter-spacing: 1px;
+        }
+
+        .occupation {
+            font-weight: 300;
+            font-size: 14px;
+            opacity: 0.9;
+            background: rgba(255,255,255,0.2);
+            display: inline-block;
+            padding: 4px 15px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            background: rgba(0,0,0,0.1);
+            padding: 15px;
+            border-radius: 20px;
+        }
+
+        .stat-item b { display: block; font-size: 18px; }
+        .stat-item span { font-size: 11px; opacity: 0.8; }
+
+        .action-buttons {
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* پخش محتوا در طول کارت */
-            box-sizing: border-box;
+            gap: 12px;
         }
 
-        .card-top h2 {
-            font-size: 1.8rem;
-            margin: 0;
-            font-weight: 700;
+        .btn-main {
+            background: white;
+            color: #e73c7e;
+            padding: 15px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: 0.3s;
         }
 
-        .card-body p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            opacity: 0.85;
+        .btn-outline {
+            background: transparent;
+            color: white;
+            padding: 13px;
+            border-radius: 15px;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.4);
+            font-size: 14px;
         }
 
-        .card-footer {
-            border-top: 1px solid rgba(0,0,0,0.1);
-            padding-top: 20px;
-        }
-
-        .card-footer.dark-border {
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
-
-        #hexDisplay {
-            font-family: monospace;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            font-weight: bold;
-        }
+        .btn-main:active { transform: scale(0.95); }
     </style>
 </head>
 <body>
 
-    <div class="palette-container">
-        <div class="palette-grid" id="grid"></div>
+    <div class="mobile-profile">
+        <div class="profile-header">
+            <img src="https://via.placeholder.com/150" alt="Avatar" class="profile-img">
+            <div class="status-dot"></div>
+        </div>
+
+        <h1>ياسين القحطاني</h1>
+        <div class="occupation">مطور تطبيقات الهواتف</div>
+
+        <div class="stats-container">
+            <div class="stat-item"><b>+50</b><span>مشروع</span></div>
+            <div class="stat-item"><b>12K</b><span>متابع</span></div>
+            <div class="stat-item"><b>4.9</b><span>تقييم</span></div>
+        </div>
+
+        <p style="font-size: 13px; line-height: 1.6; margin-bottom: 25px;">
+            شغوف بتحويل الأفكار المعقدة إلى واجهات مستخدم بسيطة وجميلة. خبرة 5 سنوات في بناء تجارب رقمية مذهلة.
+        </p>
+
+        <div class="action-buttons">
+            <a href="#" class="btn-main">ابدأ مشروعك الآن</a>
+            <a href="#" class="btn-outline">مشاهدة أعمالي</a>
+        </div>
     </div>
 
-    <div class="card" id="mainCard">
-        <div class="card-top">
-            <div style="font-size: 40px; margin-bottom: 10px;">🎨</div>
-            <h2>شماره <span id="numDisplay">۱</span></h2>
-        </div>
-        
-        <div class="card-body">
-            <p>این یک طراحی طولی مدرن است. در این حالت، کارت برای نمایش در موبایل و استفاده به عنوان کارت ویزیت دیجیتال یا استوری بسیار مناسب است.</p>
-        </div>
-
-        <div class="card-footer" id="cardFooter">
-            <div id="hexDisplay">#FFFFFF</div>
-        </div>
-    </div>
-
-    <script>
-        const colors = [
-            "#f8f9fa", "#f1f3f5", "#fff5f5", "#fff9db", "#f3fdf4", "#f0f7ff", "#fdf2ff", "#fff0f6", "#fff4e6", "#eef2ff",
-            "#ffc9c9", "#ffec99", "#b2f2bb", "#a5d8ff", "#eebefa", "#ffdeeb", "#d0ebff", "#c5f6fa", "#d3f9d8", "#ffe8cc",
-            "#ffa8a8", "#ffd43b", "#8ce99a", "#74c0fc", "#da77f2", "#f783ac", "#4dabf7", "#3bc9db", "#69db7c", "#ffa94d",
-            "#fa5252", "#fab005", "#40c057", "#228be6", "#be4bdb", "#e64980", "#fd7e14", "#adb5bd", "#868e96", "#495057",
-            "#c92a2a", "#e67700", "#2b8a3e", "#1864ab", "#862e9c", "#a61e4d", "#555555", "#333333", "#1a1a1a", "#000000"
-        ];
-
-        const grid = document.getElementById('grid');
-        const numDisplay = document.getElementById('numDisplay');
-        const hexDisplay = document.getElementById('hexDisplay');
-        const cardFooter = document.getElementById('cardFooter');
-        const root = document.querySelector(':root');
-
-        colors.forEach((color, index) => {
-            const dot = document.createElement('div');
-            dot.className = 'color-dot';
-            dot.style.backgroundColor = color;
-            dot.setAttribute('data-index', index + 1);
-            
-            if (getBrightness(color) > 200) dot.classList.add('light-bg');
-
-            dot.addEventListener('click', () => {
-                document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
-                dot.classList.add('active');
-                updateCard(color, index + 1);
-            });
-            grid.appendChild(dot);
-        });
-
-        function updateCard(color, index) {
-            root.style.setProperty('--card-bg', color);
-            numDisplay.innerText = index;
-            hexDisplay.innerText = color.toUpperCase();
-            
-            const brightness = getBrightness(color);
-            if (brightness < 128) {
-                root.style.setProperty('--text-color', '#ffffff');
-                cardFooter.classList.add('dark-border');
-            } else {
-                root.style.setProperty('--text-color', '#333333');
-                cardFooter.classList.remove('dark-border');
-            }
-        }
-
-        function getBrightness(hex) {
-            hex = hex.replace('#', '');
-            const r = parseInt(hex.substr(0, 2), 16);
-            const g = parseInt(hex.substr(2, 2), 16);
-            const b = parseInt(hex.substr(4, 2), 16);
-            return (r * 299 + g * 587 + b * 114) / 1000;
-        }
-
-        grid.firstChild.click();
-    </script>
 </body>
 </html>
