@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV | عبدالله البلوشي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0a0a0c;
+            --card-bg: #16161a;
+            --neon-blue: #00d2ff;
+            --neon-purple: #9d50bb;
+            --text-color: #e0e0e0;
+        }
+
+        * { box-sizing: border-box; transition: 0.3s; }
+
+        body {
+            margin: 0;
+            background-color: var(--bg-color);
+            font-family: 'Almarai', sans-serif;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            padding: 40px 15px;
+            overflow-x: hidden;
+        }
+
+        /* دایره‌های نئونی پس‌زمینه */
+        .glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(var(--neon-blue), var(--neon-purple));
+            filter: blur(150px);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.15;
+        }
+
+        .cv-wrapper {
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+        }
+
+        /* کارت اصلی */
+        .main-card {
+            background: var(--card-bg);
+            border-radius: 30px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: linear-gradient(var(--neon-blue), var(--neon-purple));
+        }
+
+        /* بخش پروفایل */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .img-box {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: #1f1f23;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+            color: var(--neon-blue);
+            border: 2px solid rgba(0, 210, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.1);
+        }
+
+        h1 { font-size: 28px; margin: 0; letter-spacing: 1px; }
+        .job-title { 
+            font-size: 14px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            color: var(--neon-blue);
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        /* بخش‌های محتوا */
+        .section { margin-bottom: 35px; }
+        
+        .section-h {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+        }
+
+        .section-h i { color: var(--neon-purple); }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 15px;
+            font-size: 14px;
+            line-height: 1.8;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* مهارت‌ها */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-chip {
+            background: rgba(0, 210, 255, 0.05);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            color: var(--neon-blue);
+        }
+
+        /* دکمه‌های تماس */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .contact-link {
+            background: #1f1f23;
+            padding: 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 13px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-link:hover {
+            background: var(--neon-blue);
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .whatsapp { border-color: #25d366; color: #25d366; }
+        .whatsapp:hover { background: #25d366; color: white; border-color: #25d366; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); }
+
+    </style>
+</head>
+<body>
+
+    <div class="glow" style="top: -10%; left: -10%;"></div>
+    <div class="glow" style="bottom: -10%; right: -10%;"></div>
+
+    <div class="cv-wrapper">
+        <div class="main-card">
+            
+            <div class="profile-header">
+                <div class="img-box">
+                    <i class="fas fa-terminal"></i>
+                </div>
+                <h1>عبدالله البلوشي</h1>
+                <div class="job-title">Front-End Developer & Designer</div>
+            </div>
+
+            <div class="section">
+                <div class="section-h"><i class="fas fa-user-astronaut"></i> نبذة عني</div>
+                <div class="content-box">
+                    مبرمج ومصمم واجهات متخصص في تحويل الأفكار إلى واقع رقمي مبهر. أركز على التفاصيل الدقيقة وسرعة الأداء لخلق تجربة مستخدم لا تُنسى.
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-h"><i class="fas fa-layer-group"></i> المهارات</div>
+                <div class="skills-list">
+                    <span class="skill-chip">HTML5 / CSS3</span>
+                    <span class="skill-chip">JavaScript ES6</span>
+                    <span class="skill-chip">UI/UX Design</span>
+                    <span class="skill-chip">Responsive Web</span>
+                    <span class="skill-chip">3D Printing</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-h"><i class="fas fa-history"></i> الخبرات</div>
+                <div class="content-box">
+                    <div style="margin-bottom: 10px;">
+                        <strong style="color: var(--neon-purple);">تصميم حلول المطاعم</strong><br>
+                        تطوير أنظمة المنيو الذكي والبروفايلات الرقمية.
+                    </div>
+                    <div>
+                        <strong style="color: var(--neon-purple);">صناعة الهوية البصرية</strong><br>
+                        تصميم لوجوهات وبروفايلات مهنية عالية الجودة.
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-grid">
+                <a href="https://wa.me/966548471318" class="contact-link whatsapp">
+                    <i class="fab fa-whatsapp"></i> واتساب
+                </a>
+                <a href="#" class="contact-link">
+                    <i class="fas fa-envelope"></i> ایمیل
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // افکت حرکت ملایم نئون با حرکت موس (اختیاری)
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            document.querySelectorAll('.glow').forEach(glow => {
+                glow.style.transform = `translate(${x * 50}px, ${y * 50}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
