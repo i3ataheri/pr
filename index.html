@@ -1,78 +1,123 @@
-.icon-btn {
-            width: 48px;
-            height: 48px;
-            background: white;
-            color: #3a7bd5;
-            border-radius: 16px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            font-size: 20px;
-            transition: 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .icon-btn:hover {
-            background: var(--primary-grad);
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض أعمال عبدالله البلوشي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Almarai', sans-serif;
+            background: #1a1a2e;
             color: white;
-            transform: translateY(-5px);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* وسط‌چین کردن کل محتوا */
         }
 
-        .main-btn {
-            background: var(--primary-grad);
-            color: #fff;
-            padding: 16px 50px;
+        .header {
+            text-align: center; /* وسط‌چین کردن متن‌ها */
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 20px;
+            padding: 20px;
+            text-align: center;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-            display: inline-block;
+            color: white;
             transition: 0.3s;
-            box-shadow: 0 10px 20px rgba(58, 123, 213, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
         }
 
-        .main-btn:hover {
-            box-shadow: 0 15px 30px rgba(58, 123, 213, 0.3);
-            transform: scale(1.02);
+        .category-card:active { transform: scale(0.95); background: rgba(255, 255, 255, 0.2); }
+
+        .category-card i {
+            font-size: 35px;
+            margin-bottom: 5px;
+            color: #23a6d5;
         }
 
+        .category-card span {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        /* اصلاح دکمه بازگشت برای وسط‌چین شدن قطعی */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 18px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
     </style>
 </head>
 <body>
 
-    <div class="blur-circle bc1"></div>
-    <div class="blur-circle bc2"></div>
+    <div class="header">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-right"></i> العودة للرئيسية
+        </a>
+        <h1>معرض الأعمال</h1>
+        <p>اختر القسم لتصفح المشاريع</p>
+    </div>
 
-    <div class="glass-card">
-        <div class="profile-wrapper">
-            <div class="profile-img">
-                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Eisa" alt="عيسى طاهري">
-            </div>
-        </div>
+    <div class="grid-container">
+        <a href="menus.html" class="category-card">
+            <i class="fas fa-utensils"></i>
+            <span>منيو المطاعم</span>
+        </a>
 
-        <h1>عيسى طاهري</h1>
-        <span class="subtitle">مصمم جرافيك ومبدع بصري</span>
+        <a href="profiles.html" class="category-card">
+            <i class="fas fa-id-badge"></i>
+            <span>البروفايلات</span>
+        </a>
 
-        <p class="bio">
-            أصنع جمالاً بصرياً يحكي قصتك. متخصص في تصميم الهويات التجارية، واجهات الاستخدام المبتكرة، وتحويل الأفكار إلى واقع فني ملموس.
-        </p>
+        <a href="3dprint.html" class="category-card">
+            <i class="fas fa-cube"></i>
+            <span>طباعة 3D</span>
+        </a>
 
-        <div class="specs">
-            <div class="spec-item"><i class="fas fa-brush"></i> تصميم إبداعي</div>
-            <div class="spec-item"><i class="fas fa-bolt"></i> سرعة في التنفيذ</div>
-            <div class="spec-item"><i class="fas fa-fingerprint"></i> هوية بصرية</div>
-            <div class="spec-item"><i class="fas fa-mobile-alt"></i> واجهات UI/UX</div>
-        </div>
+        <a href="video-menus.html" class="category-card">
+            <i class="fas fa-play-circle"></i>
+            <span>منيو فيديو</span>
+        </a>
+        
+        <a href="google-review.html" class="category-card">
+            <i class="fas fa-star"></i>
+            <span>تقييم جوجل</span>
+        </a>
 
-        <div class="social-row">
-            <a href="#" class="icon-btn"><i class="fab fa-behance"></i></a>
-            <a href="#" class="icon-btn"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="icon-btn"><i class="fab fa-whatsapp"></i></a>
-            <a href="#" class="icon-btn"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-
-        <a href="mailto:eisa@example.com" class="main-btn">تواصل للعمل</a>
+        <a href="https://wa.me/966548471318" class="category-card" style="border-color: #25d366;">
+            <i class="fab fa-whatsapp" style="color: #25d366;"></i>
+            <span>طلب خاص</span>
+        </a>
     </div>
 
 </body>
