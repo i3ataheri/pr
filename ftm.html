@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أم فاروق - الزعفران الأصلي</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Almarai:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* بنفش شاد و زنده گلبرگ زعفران */
+            --saffron-purple: #8e44ad; 
+            --saffron-dark: #6c3483;
+            --saffron-gold: #f1c40f;   /* طلایی روشن */
+            --saffron-red: #e74c3c;    /* قرمز کلاله */
+            --bg-body: #fffbf5;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Almarai', sans-serif;
+            background-color: var(--bg-body);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .profile-card {
+            width: 370px;
+            background: #fff;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(142, 68, 173, 0.2);
+            overflow: hidden;
+            border: 2px solid rgba(142, 68, 173, 0.1);
+            position: relative;
+        }
+
+        /* هدر بنفش زعفرانی */
+        .card-header {
+            background: linear-gradient(135deg, var(--saffron-purple), var(--saffron-dark));
+            height: 160px;
+            position: relative;
+            clip-path: ellipse(120% 100% at 50% 0%);
+        }
+
+        .card-header::after {
+            content: "✿";
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 60px;
+        }
+
+        .photo-box {
+            width: 150px;
+            height: 150px;
+            margin: -80px auto 10px;
+            position: relative;
+            z-index: 5;
+            background: #fff;
+            padding: 4px;
+            border-radius: 50%;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .photo-box img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--saffron-purple);
+        }
+
+        .main-content {
+            padding: 10px 25px 35px;
+            text-align: center;
+        }
+
+        .name {
+            font-family: 'Cairo', sans-serif;
+            color: var(--saffron-dark);
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 5px;
+        }
+
+        .slogan {
+            font-family: 'Cairo', sans-serif;
+            color: var(--saffron-red);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .bio-text {
+            color: #444;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        /* کادرهای تأیید */
+        .badges-row {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .badge-card {
+            background: #fdf7ff;
+            color: var(--saffron-dark);
+            padding: 10px 15px;
+            border-radius: 18px;
+            font-size: 14px;
+            font-weight: 700;
+            border: 1.5px solid var(--saffron-purple);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(142, 68, 173, 0.05);
+        }
+
+        .badge-card i {
+            color: var(--saffron-gold);
+            font-size: 16px;
+        }
+
+        /* دکمه واتس‌اپ با انیمیشن */
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(90deg, #25D366, #128C7E);
+            color: white;
+            text-decoration: none;
+            padding: 18px;
+            border-radius: 25px;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4); }
+            100% { transform: scale(1); }
+        }
+
+        .whatsapp-btn i {
+            margin-left: 12px;
+            font-size: 28px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-card">
+        <div class="card-header"></div>
+        
+        <div class="photo-box">
+            <img src="https://raw.githubusercontent.com/i3ataheri/pr/main/img/saffron.jpg" alt="أم فاروق">
+        </div>
+
+        <div class="main-content">
+            <h1 class="name">أم فاروق</h1>
+            <p class="slogan">خياركم الأول للزعفران الإيراني</p>
+            
+            <p class="bio-text">
+                نقدم لكم الزعفران الملكي الفاخر (سوبر نقيل) <br>
+                <b>طبيعي 100%، لون مبهر، وعطر يفوح بالدلال.</b>
+            </p>
+
+            <div class="badges-row">
+                <div class="badge-card">
+                    <i class="fas fa-certificate"></i>
+                    <span>أصلي 100%</span>
+                </div>
+                <div class="badge-card">
+                    <i class="fas fa-award"></i>
+                    <span>جودة فاخرة</span>
+                </div>
+            </div>
+
+            <a href="https://wa.me/966533509286" class="whatsapp-btn" target="_blank">
+                <span>اطلب عبر واتساب</span>
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
