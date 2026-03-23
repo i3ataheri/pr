@@ -3,151 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>زعفران أم فاروق | الأصالة الملكية</title>
+    <title>زعفران أم فاروق | ویجت با رنگ‌بندی حرفه‌ای</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --gold: #ffc107;
-            --p-deep: #2e1065;
-            /* رنگ شیشه‌ای تار (Mac Widget Style) */
-            --glass-bg: rgba(255, 255, 255, 0.4);
+            /* پالت رنگی جدید */
+            --gold-deep: #f1c40f; /* طلایی غنی */
+            --glass-bg: rgba(255, 255, 255, 0.22);
             --glass-blur: blur(25px);
-            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --text-gold: #f8c291; /* طلایی ملایم‌تر برای شعار */
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            /* پس‌زمینه زنده و محو زعفران */
-            background: linear-gradient(rgba(46, 16, 101, 0.7), rgba(46, 16, 101, 0.7)), 
+            /* پس‌زمینه بنفش که روی آن رنگ‌های طلایی و سفید می‌درخشند */
+            background: linear-gradient(rgba(46, 16, 101, 0.85), rgba(46, 16, 101, 0.85)), 
                         url('https://images.unsplash.com/photo-1502332980254-ca0ade0537f2?auto=format&fit=crop&w=1000');
             background-size: cover;
             background-position: center;
             display: flex; justify-content: center; align-items: center;
             min-height: 100vh; font-family: 'Almarai', sans-serif;
-            padding: 15px;
+            padding: 20px;
         }
 
-        /* کارت ویجت اصلی */
-        .story-container {
+        .widget-card {
             width: 100%;
-            max-width: 400px;
-            height: 750px;
+            max-width: 380px;
+            height: auto; 
             display: flex;
             flex-direction: column;
-            padding: 30px;
-            position: relative;
-            
-            /* افکت شیشه‌ای مک */
+            padding: 35px 25px;
             background: var(--glass-bg);
             backdrop-filter: var(--glass-blur);
             -webkit-backdrop-filter: var(--glass-blur);
-            border-radius: 45px;
-            border: 2px solid var(--glass-border);
-            box-shadow: 0 40px 100px rgba(0,0,0,0.25);
-            
-            /* تراز عمقی المان‌ها */
-            justify-content: space-between;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.35);
         }
 
-        /* بخش پروفایل - داخل کادر شیشه‌ای */
         .profile-section {
-            text-align: center; 
-            margin-bottom: 25px;
+            text-align: center;
         }
+
         .profile-ring {
-            width: 150px; height: 150px;
+            width: 130px; height: 130px;
             border-radius: 50%;
             padding: 4px;
-            background: linear-gradient(135deg, var(--gold), #fff, var(--gold));
+            background: linear-gradient(135deg, var(--gold-deep), #fff);
             margin: 0 auto 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            border: 2px solid rgba(255,255,255,0.4);
         }
+
         .profile-ring img {
             width: 100%; height: 100%;
             border-radius: 50%; object-fit: cover;
         }
 
-        /* محتوای متنی */
-        .glass-box {
-            background: transparent;
-            padding: 0;
-            border-radius: 0;
-            text-align: center;
-            box-shadow: none;
-            border: none;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
         .name-title {
-            font-family: 'Cairo'; font-size: 38px; color: var(--p-deep);
-            font-weight: 900; margin-bottom: 10px;
-            text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+            font-family: 'Cairo'; font-size: 34px; 
+            color: var(--gold-deep); /* تغییر نام به طلایی */
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
-        .luxury-text {
-            color: #222; line-height: 2; font-size: 16px; margin-bottom: 30px;
-            background: rgba(255,255,255,0.2); padding: 20px;
-            border-radius: 20px; border: 1px solid var(--glass-border);
+        .slogan-highlight {
+            color: var(--text-gold); /* تغییر شعار به طلایی ملایم */
+            font-weight: 700; 
+            font-size: 17px; 
+            margin-bottom: 25px;
+            text-align: center;
+            display: block;
+            letter-spacing: 0.5px;
         }
 
-        /* ویژگی‌ها */
-        .luxury-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
+        .description-box {
+            background: rgba(255,255,255,0.12);
+            padding: 22px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .description-box p {
+            color: #ffffff; /* متن کادر سفید باقی می‌ماند برای خوانایی */
+            line-height: 2.1; font-size: 15px;
+        }
+
+        .features-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
             margin-bottom: 30px;
         }
-        .feature-item {
-            background: rgba(255,255,255,0.2); padding: 15px; border-radius: 20px;
-            font-size: 13px; font-weight: 800; color: #222;
-            display: flex; align-items: center; gap: 12px;
-            border: 1px solid var(--glass-border);
-        }
-        .feature-item i { color: var(--gold); font-size: 19px; }
 
-        /* دکمه سفارش */
-        .btn-order {
-            background: #25d366;
-            color: white; text-decoration: none;
-            padding: 22px; border-radius: 25px;
-            font-family: 'Cairo'; font-size: 24px; font-weight: 900;
-            display: flex; align-items: center; justify-content: center; gap: 15px;
-            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.3);
-            transition: 0.3s ease-in-out;
+        .feat-item {
+            background: rgba(255,255,255,0.1); padding: 12px; border-radius: 18px;
+            font-size: 13px; font-weight: 700; 
+            color: #ffffff; /* متن ویژگی‌ها سفید */
+            display: flex; align-items: center; gap: 8px;
+            border: 1px solid rgba(255,255,255,0.05);
         }
-        .btn-order:active { transform: scale(0.97); }
+
+        .feat-item i { 
+            color: var(--gold-deep); /* آیکون‌ها طلایی */
+        }
+
+        .btn-whatsapp {
+            background: #25d366; /* پس‌زمینه سبز واتس‌اپ */
+            color: white; text-decoration: none;
+            padding: 20px; border-radius: 25px;
+            font-family: 'Cairo'; font-size: 22px; font-weight: 900;
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp i {
+            color: #fff; /* آیکون واتس‌اپ سفید */
+        }
     </style>
 </head>
 <body>
 
-    <div class="story-container">
+    <div class="widget-card">
         
         <div class="profile-section">
             <div class="profile-ring">
                 <img src="https://raw.githubusercontent.com/i3ataheri/pr/main/img/saffron.jpg" alt="أم فاروق">
             </div>
             <h1 class="name-title">أم فاروق</h1>
+            <span class="slogan-highlight">خياركم الأول للزعفران الإيراني</span>
         </div>
 
-        <div class="glass-box">
-            <div>
-                <div class="luxury-text">
-                    خيوط من الذهب الأحمر، ننتقيها لكم يدوياً من أعرق المزارع. زعفران <b>"سوبر نقيل"</b> أصلي يمنح أطباقكم نكهة لا تُنسى ولوناً ملكياً فريداً.
-                </div>
-
-                <div class="luxury-grid">
-                    <div class="feature-item"><i class="fas fa-gem"></i> <span>نقاء أصيل</span></div>
-                    <div class="feature-item"><i class="fas fa-certificate"></i> <span>مخبري معتمد</span></div>
-                    <div class="feature-item"><i class="fas fa-leaf"></i> <span>طبيعي 100%</span></div>
-                    <div class="feature-item"><i class="fas fa-shipping-fast"></i> <span>توصيل سريع</span></div>
-                </div>
+        <div class="content-body">
+            <div class="description-box">
+                <p>
+                    نقدم لكم الزعفران الملكي الفاخر <b>(سوبر نقيل)</b><br>
+                    طبيعي 100%، لون مبهر، وعطر يفوح بالدلال.
+                </p>
             </div>
 
-            <a href="https://wa.me/966533509286" class="btn-order" target="_blank">
+            <div class="features-grid">
+                <div class="feat-item"><i class="fas fa-gem"></i> <span>نقاء أصيل</span></div>
+                <div class="feat-item"><i class="fas fa-wind"></i> <span>رائحة ملكية</span></div>
+                <div class="feat-item"><i class="fas fa-leaf"></i> <span>طبیعی 100%</span></div>
+                <div class="feat-item"><i class="fas fa-shipping-fast"></i> <span>توصیل سریع</span></div>
+            </div>
+
+            <a href="https://wa.me/966533509286" class="btn-whatsapp" target="_blank">
                 <i class="fab fa-whatsapp"></i>
                 اطلب الآن
             </a>
